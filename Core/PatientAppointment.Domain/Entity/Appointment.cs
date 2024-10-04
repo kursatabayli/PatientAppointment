@@ -18,14 +18,15 @@ namespace PatientAppointment.Domain.Entity
 
         [DataType(DataType.Time)]
         public TimeSpan AppointmentTime { get; set; }
-        public int PatientID { get; set; }
+        public int PatientId { get; set; }
         public Patient Patient { get; set; }
         public int PolyclinicId { get; set; }
         public Polyclinic Polyclinic { get; set; }
         public int PersonnelId { get; set; }
         public Personnel Personnel { get; set; }
         public int StatusId { get; set; }
-        public Status Status { get; set; }
+        public AppointmentStatus Status { get; set; }
         public string? StatusDescription { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

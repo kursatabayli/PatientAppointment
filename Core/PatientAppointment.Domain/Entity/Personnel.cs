@@ -1,6 +1,7 @@
 ﻿using PatientAppointment.Domain.Entity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,8 +20,12 @@ namespace PatientAppointment.Domain.Entities
         public string PersonnelPhone { get; set; }
         public string PersonnelEmail { get; set; }
         public string MedicalLicenseNumber { get; set; }
+
+        [Column(TypeName = "Date")]
         public DateTime LicenseExpirationDate { get; set; }
         public int YearsOfExperience { get; set; }
+
+        [Column(TypeName = "Date")]
         public DateTime DateOfBirth { get; set; }
         public string? ProfilePictureUrl { get; set; }
         public int PolyclinicId { get; set; }

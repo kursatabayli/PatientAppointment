@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using PatientAppointment.Application.CQRS.Queries.ContactQueries;
 using PatientAppointment.Application.CQRS.Results.ContactResults;
 using PatientAppointment.Domain.Entities;
@@ -14,24 +15,19 @@ namespace PatientAppointment.Application.CQRS.Handlers.ContactHandlers
     public class GetContactByIdQueryHandler : IRequestHandler<GetContactByIdQuery, ContactResult>
     {
         private readonly IRepository<Contact> _repository;
+        private readonly IMapper _mapper;
 
-        public GetContactByIdQueryHandler(IRepository<Contact> repository)
+        public GetContactByIdQueryHandler(IRepository<Contact> repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         public async Task<ContactResult> Handle(GetContactByIdQuery request, CancellationToken cancellationToken)
         {
             var value = await _repository.GetByIdAsync(request.Id);
-            return new ContactResult
-            {
-                ContactId = value.ContactId,
-                Title = value.Title,
-                Address = value.Address,
-                Phone = value.Phone,
-                Email = value.Email,
-                Description = value.Description,
-            };
+            var result = _mapper.Map<ContactResult>(value);
+            return result;
         }
     }
 }

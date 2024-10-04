@@ -125,7 +125,7 @@ namespace PatientAppointment.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime>("SenDate")
+                    b.Property<DateTime>("SendDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Subject")
@@ -147,6 +147,9 @@ namespace PatientAppointment.Persistence.Migrations
 
                     b.Property<int?>("BloodTypeId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("Date");
 
                     b.Property<int>("GenderId")
                         .HasColumnType("int");
@@ -193,7 +196,7 @@ namespace PatientAppointment.Persistence.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("PersonnelId"));
 
                     b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("Date");
 
                     b.Property<int>("GenderId")
                         .HasColumnType("int");
@@ -203,7 +206,7 @@ namespace PatientAppointment.Persistence.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("LicenseExpirationDate")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("Date");
 
                     b.Property<string>("MedicalLicenseNumber")
                         .IsRequired()
@@ -340,7 +343,10 @@ namespace PatientAppointment.Persistence.Migrations
                     b.Property<TimeSpan>("AppointmentTime")
                         .HasColumnType("time(6)");
 
-                    b.Property<int>("PatientID")
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("PatientId")
                         .HasColumnType("int");
 
                     b.Property<int>("PersonnelId")
@@ -357,7 +363,7 @@ namespace PatientAppointment.Persistence.Migrations
 
                     b.HasKey("AppointmentId");
 
-                    b.HasIndex("PatientID");
+                    b.HasIndex("PatientId");
 
                     b.HasIndex("PersonnelId");
 
@@ -366,6 +372,23 @@ namespace PatientAppointment.Persistence.Migrations
                     b.HasIndex("StatusId");
 
                     b.ToTable("Appointment");
+                });
+
+            modelBuilder.Entity("PatientAppointment.Domain.Entity.AppointmentStatus", b =>
+                {
+                    b.Property<int>("AppointmentStatusId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("AppointmentStatusId"));
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("AppointmentStatusId");
+
+                    b.ToTable("AppointmentStatus");
                 });
 
             modelBuilder.Entity("PatientAppointment.Domain.Entity.BloodType", b =>
@@ -471,23 +494,6 @@ namespace PatientAppointment.Persistence.Migrations
                     b.ToTable("Role");
                 });
 
-            modelBuilder.Entity("PatientAppointment.Domain.Entity.Status", b =>
-                {
-                    b.Property<int>("StatusId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("StatusId"));
-
-                    b.Property<string>("StatusName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("StatusId");
-
-                    b.ToTable("Status");
-                });
-
             modelBuilder.Entity("PatientAppointment.Domain.Entity.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -583,7 +589,7 @@ namespace PatientAppointment.Persistence.Migrations
                 {
                     b.HasOne("PatientAppointment.Domain.Entities.Patient", "Patient")
                         .WithMany("Appointments")
-                        .HasForeignKey("PatientID")
+                        .HasForeignKey("PatientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -599,7 +605,7 @@ namespace PatientAppointment.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PatientAppointment.Domain.Entity.Status", "Status")
+                    b.HasOne("PatientAppointment.Domain.Entity.AppointmentStatus", "Status")
                         .WithMany()
                         .HasForeignKey("StatusId")
                         .OnDelete(DeleteBehavior.Cascade)

@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using PatientAppointment.Application.CQRS.Queries.PolyclinicQueries;
 using PatientAppointment.Application.CQRS.Results.PolyclinicResults;
 using PatientAppointment.Domain.Entities;
@@ -14,20 +15,19 @@ namespace PatientAppointment.Application.CQRS.Handlers.PolyclinicHandlers
     public class GetPolyclinicByIdQueryHandler : IRequestHandler<GetPolyclinicByIdQuery, PolyclinicResult>
     {
         private readonly IRepository<Polyclinic> _repository;
+        private readonly IMapper _mapper;
 
-        public GetPolyclinicByIdQueryHandler(IRepository<Polyclinic> repository)
+        public GetPolyclinicByIdQueryHandler(IRepository<Polyclinic> repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         public async Task<PolyclinicResult> Handle(GetPolyclinicByIdQuery request, CancellationToken cancellationToken)
         {
             var value = await _repository.GetByIdAsync(request.Id);
-            return new PolyclinicResult
-            {
-                PolyclinicId = value.PolyclinicId,
-                PolyclinicName = value.PolyclinicName
-            };
+            var result = _mapper.Map<PolyclinicResult>(value);
+            return result;
         }
     }
 }
