@@ -18,6 +18,7 @@ namespace PatientAppointment.Persistence.Context
 
         public DbSet<AboutUs> AboutUs { get; set; }
         public DbSet<Appointment> Appointment { get; set; }
+        public DbSet<AppointmentStatus> AppointmentStatus { get; set; }
         public DbSet<BloodType> BloodType { get; set; }
         public DbSet<Polyclinic> Polyclinic { get; set; }
         public DbSet<Contact> Contact { get; set; }
@@ -32,7 +33,6 @@ namespace PatientAppointment.Persistence.Context
         public DbSet<SocialMedia> SocialMedia { get; set; }
         public DbSet<Testimonial> Testimonial { get; set; }
         public DbSet<User> User { get; set; }
-        public DbSet<Status> Status { get; set; }
 
     }
 }

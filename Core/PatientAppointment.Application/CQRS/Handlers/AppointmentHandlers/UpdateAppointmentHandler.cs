@@ -7,28 +7,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace PatientAppointment.Application.CQRS.Handlers.AppointmentHandlers
 {
     public class UpdateAppointmentHandler : IRequestHandler<UpdateAppointmentCommand>
     {
         private readonly IRepository<Appointment> _repository;
+        private readonly IMapper _mapper;
 
-        public UpdateAppointmentHandler(IRepository<Appointment> repository)
+        public UpdateAppointmentHandler(IRepository<Appointment> repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         public async Task Handle(UpdateAppointmentCommand request, CancellationToken cancellationToken)
         {
             var values = await _repository.GetByIdAsync(request.AppointmentId);
-            values.AppointmentDate = request.AppointmentDate;
-            values.AppointmentTime = request.AppointmentTime;
-            values.PolyclinicId = request.PolyclinicId;
-            values.PatientID = request.PatientID;
-            values.PersonnelId = request.PersonnelId;
-            values.StatusId = request.PersonnelId;
-            values.StatusDescription = request.StatusDescription;
+            _mapper.Map(request, values);
             await _repository.UpdateAsync(values);
         }
     }

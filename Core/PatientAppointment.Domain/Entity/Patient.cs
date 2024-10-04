@@ -1,6 +1,7 @@
 ﻿using PatientAppointment.Domain.Entity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,9 @@ namespace PatientAppointment.Domain.Entities
         public string PatientAddress { get; set; }
         public string PatientPhone { get; set; }
         public string PatientEmail { get; set; }
+
+        [Column(TypeName = "Date")]
+        public DateTime DateOfBirth { get; set; }
         public int? BloodTypeId { get; set; }
         public BloodType BloodType { get; set; }
         public List<Appointment> Appointments { get; set; }

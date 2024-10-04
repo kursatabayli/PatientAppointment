@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using PatientAppointment.Application.CQRS.Queries.BloodTypeQueries;
 using PatientAppointment.Application.CQRS.Results.BloodTypeResults;
 using PatientAppointment.Domain.Entity;
@@ -14,20 +15,19 @@ namespace PatientAppointment.Application.CQRS.Handlers.BloodTypeHandlers
     public class GetBloodTypeQueryHandler : IRequestHandler<BloodTypeQuery, List<BloodTypeResult>>
     {
         private readonly IRepository<BloodType> _repository;
+        private readonly IMapper _mapper;
 
-        public GetBloodTypeQueryHandler(IRepository<BloodType> repository)
+        public GetBloodTypeQueryHandler(IRepository<BloodType> repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         public async Task<List<BloodTypeResult>> Handle(BloodTypeQuery request, CancellationToken cancellationToken)
         {
             var values = await _repository.GetAllAsync();
-            return values.Select(x => new BloodTypeResult
-            {
-                BloodTypeId = x.BloodTypeId,
-                BloodTypes = x.BloodTypes
-            }).ToList();
+            var results = _mapper.Map<List<BloodTypeResult>>(values);
+            return results;
         }
     }
 }

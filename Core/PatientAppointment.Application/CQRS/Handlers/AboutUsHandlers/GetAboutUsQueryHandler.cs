@@ -8,28 +8,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace PatientAppointment.Application.CQRS.Handlers.AboutUsHandlers
 {
     public class GetAboutUsQueryHandler : IRequestHandler<AboutUsQuery, List<AboutUsResult>>
     {
         private readonly IRepository<AboutUs> _repository;
+        private readonly IMapper _mapper;
 
-        public GetAboutUsQueryHandler(IRepository<AboutUs> repository)
+        public GetAboutUsQueryHandler(IRepository<AboutUs> repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         public async Task<List<AboutUsResult>> Handle(AboutUsQuery request, CancellationToken cancellationToken)
         {
             var values = await _repository.GetAllAsync();
-            return values.Select(x => new AboutUsResult
-            {
-                AboutUsId = x.AboutUsId,
-                Title = x.Title,
-                Description = x.Description,
-                ImageUrl = x.ImageUrl,
-            }).ToList();
+            var results = _mapper.Map<List<AboutUsResult>>(values);
+            return results;
         }
     }
 }
