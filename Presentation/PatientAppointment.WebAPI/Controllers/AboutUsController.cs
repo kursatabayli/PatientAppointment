@@ -20,14 +20,14 @@ namespace PatientAppointment.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> AboutUS()
         {
-            var values = await _mediator.Send(new AboutUsQuery());
+            var values = await _mediator.Send(new GetAllAboutUsQuery());
             return Ok(values);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> AboutUsById(int id)
         {
-            var value = await _mediator.Send(new AboutUsByIdQuery(id));
+            var value = await _mediator.Send(new GetAboutUsByIdQuery(id));
             return Ok(value);
         }
 

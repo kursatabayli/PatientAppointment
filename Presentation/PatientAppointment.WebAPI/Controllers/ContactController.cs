@@ -20,7 +20,7 @@ namespace PatientAppointment.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> Contact()
         {
-            var values = await _mediator.Send(new GetContactQuery());
+            var values = await _mediator.Send(new GetAllContactQuery());
             return Ok(values);
         }
 

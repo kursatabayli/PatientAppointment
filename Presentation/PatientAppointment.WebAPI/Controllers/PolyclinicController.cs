@@ -20,7 +20,7 @@ namespace PatientAppointment.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> Polyclinic()
         {
-            var values = await _mediator.Send(new GetPolyclinicQuery());
+            var values = await _mediator.Send(new GetAllPolyclinicQuery());
             return Ok(values);
         }
 

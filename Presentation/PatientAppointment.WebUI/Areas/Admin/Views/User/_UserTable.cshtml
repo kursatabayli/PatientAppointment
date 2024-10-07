@@ -1,0 +1,30 @@
+﻿@model IEnumerable<GetUserDto>
+
+@{
+    int counter = 1;
+}
+
+<div class="userTable-container">
+    <table class="table userTable table-striped table-bordered display">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Kimlik Numarası</th>
+                <th>Email</th>
+                <th>Telefon Numarası</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@counter</td>
+                    <td>@item.IdentificationNumber</td>
+                    <td>@item.Email</td>
+                    <td>@item.PhoneNumber</td>
+                </tr>
+                counter++;
+            }
+        </tbody>
+    </table>
+</div>

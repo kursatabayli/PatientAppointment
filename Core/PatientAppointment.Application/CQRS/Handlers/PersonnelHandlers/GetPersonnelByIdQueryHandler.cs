@@ -23,9 +23,9 @@ namespace PatientAppointment.Application.CQRS.Handlers.PersonnelHandlers
             _mapper = mapper;
         }
 
-        public Task<PersonnelResult> Handle(GetPersonnelByIdQuery request, CancellationToken cancellationToken)
+        public async Task<PersonnelResult> Handle(GetPersonnelByIdQuery request, CancellationToken cancellationToken)
         {
-            var value = _repository.GetByIdAsync(request.Id);
+            var value = await _repository.GetByIdAsync(request.Id);
             var result = _mapper.Map<PersonnelResult>(value);
             return result;
         }

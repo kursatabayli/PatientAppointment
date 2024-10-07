@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+@await Html.PartialAsync("_Head.cshtml")
+<body>
+    @await Html.PartialAsync("_Sidebar.cshtml")
+
+    <div class="main-content">
+        @await Html.PartialAsync("_Navbar.cshtml")
+
+        <div class="content">
+            @RenderBody()
+        </div>
+
+        @await Html.PartialAsync("_Footer.cshtml")
+    </div>
+
+    @await Html.PartialAsync("_Script.cshtml")
+</body>
+</html>

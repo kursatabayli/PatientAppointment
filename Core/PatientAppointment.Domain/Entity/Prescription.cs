@@ -11,7 +11,6 @@ namespace PatientAppointment.Domain.Entity
     {
         public int PrescriptionId { get; set; }
         public string Frequency { get; set; }
-        public DateTime DatePrescribed { get; set; }
         public int MedicationId { get; set; }
         public Medication Medication { get; set; }
         public int PatientId { get; set; }
