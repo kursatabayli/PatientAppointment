@@ -19,7 +19,7 @@ namespace PatientAppointment.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> Gender()
         {
-            var values = await _mediator.Send(new GetGenderQuery());
+            var values = await _mediator.Send(new GetAllGenderQuery());
             return Ok(values);
         }
     }

@@ -20,14 +20,14 @@ namespace PatientAppointment.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> BloodTypes()
         {
-            var values = await _mediator.Send(new BloodTypeQuery());
+            var values = await _mediator.Send(new GetAllBloodTypeQuery());
             return Ok(values);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> BloodTypeById(int id)
         {
-            var value = await _mediator.Send(new BloodTypeByIdQuery(id));
+            var value = await _mediator.Send(new GetBloodTypeByIdQuery(id));
             return Ok(value);
         }
 

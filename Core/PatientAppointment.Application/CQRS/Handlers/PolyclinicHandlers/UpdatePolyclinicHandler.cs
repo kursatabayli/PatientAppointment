@@ -24,9 +24,9 @@ namespace PatientAppointment.Application.CQRS.Handlers.PolyclinicHandlers
 
         public async Task Handle(UpdatePolyclinicCommand request, CancellationToken cancellationToken)
         {
-            var values = await _repository.GetByIdAsync(request.PolyclinicId);
-            _mapper.Map(request, values);
-            await _repository.UpdateAsync(values);
+            var value = await _repository.GetByIdAsync(request.PolyclinicId);
+            _mapper.Map(request, value);
+            await _repository.UpdateAsync(value);
         }
     }
 }

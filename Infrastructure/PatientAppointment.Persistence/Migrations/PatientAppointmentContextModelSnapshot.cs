@@ -318,10 +318,6 @@ namespace PatientAppointment.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.HasKey("TestimonialId");
 
                     b.HasIndex("PatientId");
@@ -450,9 +446,6 @@ namespace PatientAppointment.Persistence.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("PrescriptionId"));
 
-                    b.Property<DateTime>("DatePrescribed")
-                        .HasColumnType("datetime(6)");
-
                     b.Property<string>("Frequency")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -507,7 +500,6 @@ namespace PatientAppointment.Persistence.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("IdentificationNumber")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Password")
@@ -521,7 +513,6 @@ namespace PatientAppointment.Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("RoleId")

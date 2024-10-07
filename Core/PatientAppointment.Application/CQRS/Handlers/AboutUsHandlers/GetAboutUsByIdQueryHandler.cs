@@ -12,7 +12,7 @@ using AutoMapper;
 
 namespace PatientAppointment.Application.CQRS.Handlers.AboutUsHandlers
 {
-    public class GetAboutUsByIdQueryHandler : IRequestHandler<AboutUsByIdQuery, AboutUsResult>
+    public class GetAboutUsByIdQueryHandler : IRequestHandler<GetAboutUsByIdQuery, AboutUsResult>
     {
         private readonly IRepository<AboutUs> _repository;
         private readonly IMapper _mapper;
@@ -23,7 +23,7 @@ namespace PatientAppointment.Application.CQRS.Handlers.AboutUsHandlers
             _mapper = mapper;
         }
 
-        public async Task<AboutUsResult> Handle(AboutUsByIdQuery request, CancellationToken cancellationToken)
+        public async Task<AboutUsResult> Handle(GetAboutUsByIdQuery request, CancellationToken cancellationToken)
         {
             var value = await _repository.GetByIdAsync(request.Id);
             var result = _mapper.Map<AboutUsResult>(value);

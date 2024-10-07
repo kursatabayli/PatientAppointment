@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace PatientAppointment.Application.CQRS.Handlers.BloodTypeHandlers
 {
-    public class GetBloodTypeByIdQueryHandler : IRequestHandler<BloodTypeByIdQuery, BloodTypeResult>
+    public class GetBloodTypeByIdQueryHandler : IRequestHandler<GetBloodTypeByIdQuery, BloodTypeResult>
     {
         private readonly IRepository<BloodType> _repository;
         private readonly IMapper _mapper;
@@ -23,7 +23,7 @@ namespace PatientAppointment.Application.CQRS.Handlers.BloodTypeHandlers
             _mapper = mapper;
         }
 
-        public async Task<BloodTypeResult> Handle(BloodTypeByIdQuery request, CancellationToken cancellationToken)
+        public async Task<BloodTypeResult> Handle(GetBloodTypeByIdQuery request, CancellationToken cancellationToken)
         {
             var value = await _repository.GetByIdAsync(request.Id);
             var result = _mapper.Map<BloodTypeResult>(value);

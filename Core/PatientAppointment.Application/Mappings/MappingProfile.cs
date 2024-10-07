@@ -10,6 +10,8 @@ using PatientAppointment.Application.CQRS.Commands.MessageCommands;
 using PatientAppointment.Application.CQRS.Commands.PatientCommands;
 using PatientAppointment.Application.CQRS.Commands.PersonnelCommands;
 using PatientAppointment.Application.CQRS.Commands.PolyclinicCommands;
+using PatientAppointment.Application.CQRS.Commands.PrescriptionCommands;
+using PatientAppointment.Application.CQRS.Commands.UserCommands;
 using PatientAppointment.Application.CQRS.Results.AboutUsResults;
 using PatientAppointment.Application.CQRS.Results.AppointmentResults;
 using PatientAppointment.Application.CQRS.Results.AppointmentStatusResults;
@@ -22,6 +24,8 @@ using PatientAppointment.Application.CQRS.Results.MessageResults;
 using PatientAppointment.Application.CQRS.Results.PatientResults;
 using PatientAppointment.Application.CQRS.Results.PersonnelResults;
 using PatientAppointment.Application.CQRS.Results.PolyclinicResults;
+using PatientAppointment.Application.CQRS.Results.PrescriptionResults;
+using PatientAppointment.Application.CQRS.Results.UserResults;
 using PatientAppointment.Domain.Entities;
 using PatientAppointment.Domain.Entity;
 using System;
@@ -82,6 +86,14 @@ namespace PatientAppointment.Application.Mappings
             CreateMap<Personnel, PersonnelResult>();
             CreateMap<CreatePersonnelCommand, Personnel>();
             CreateMap<UpdatePersonnelCommand, Personnel>();
+            
+            CreateMap<Prescription, PrescriptionResult>();
+            CreateMap<CreatePrescriptionCommand, Prescription>();
+            CreateMap<UpdatePrescriptionCommand, Prescription>();
+            
+            CreateMap<User, UserResult>();
+            CreateMap<CreateUserCommand, User>();
+            CreateMap<UpdateUserCommand, User>();
         }
     }
 }

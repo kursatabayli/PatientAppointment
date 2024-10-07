@@ -11,7 +11,6 @@ namespace PatientAppointment.Domain.Entities
         public int TestimonialId { get; set; }
         public int PatientId { get; set; }
         public Patient Patient { get; set; }
-        public string Title { get; set; }
         public string HospitalReview { get; set; }
         public string PersonnelReview { get; set; }
         public DateTime CreatedDate { get; set; }

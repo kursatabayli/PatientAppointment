@@ -15,9 +15,9 @@ namespace PatientAppointment.Domain.Entity
         public string? IdentificationNumber { get; set; }
         public string Password { get; set; }
         public int? PatientId { get; set; }
-        public Patient Patient { get; set; }
+        public Patient? Patient { get; set; }
         public int? PersonnelId { get; set; }
-        public Personnel Personnel { get; set; }
+        public Personnel? Personnel { get; set; }
         public int RoleId { get; set; }
         public Role Role { get; set; }
     }

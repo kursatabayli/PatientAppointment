@@ -16,9 +16,10 @@ namespace PatientAppointment.Application.CQRS.Handlers.PolyclinicHandlers
         private readonly IRepository<Polyclinic> _repository;
         private readonly IMapper _mapper;
 
-        public CreatePolyclinicHandler(IRepository<Polyclinic> repository)
+        public CreatePolyclinicHandler(IRepository<Polyclinic> repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         public async Task Handle(CreatePolyclinicCommand request, CancellationToken cancellationToken)
