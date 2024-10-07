@@ -1,0 +1,42 @@
+﻿@model IEnumerable<GetUserWithPatientDetailsDto>
+
+@{
+    int counter = 1;
+}
+
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h4 class="card-title clickable">
+            Hastalar
+            <i class="fas fa-chevron-up rotate-animation rotate-down"></i>
+        </h4>
+        <div class="userTable-container">
+            <table class="table userTable table-striped table-bordered display">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Hasta Adı</th>
+                        <th>Kimlik Numarası</th>
+                        <th>Email</th>
+                        <th>Telefon Numarası</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@counter</td>
+                            <td>@item.PatientName</td>
+                            <td>@item.IdentificationNumber</td>
+                            <td>@item.Email</td>
+                            <td>@item.PhoneNumber</td>
+                        </tr>
+                        counter++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

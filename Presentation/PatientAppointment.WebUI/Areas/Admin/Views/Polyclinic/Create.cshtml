@@ -1,0 +1,23 @@
+﻿@model CreatePolyclinicDto
+
+@{
+    ViewData["Title"] = "Poliklinik Oluşturma";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-12">
+            <h4 class="card-title">Poliklinik Oluşturma</h4>
+            <form data-action-type="create" asp-action="Create" method="post">
+                <div class="form-group">
+                    <label asp-for="PolyclinicName">Poliklinik Adı</label>
+                    <input type="text" class="form-control" asp-for="PolyclinicName" placeholder="Poliklinik Adı Giriniz" />
+                    <span asp-validation-for="PolyclinicName" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary waves-effect waves-light">Poliklinik Ekle</button>
+                <a href="/Admin/Polyclinic/Index" class="btn btn-secondary waves-effect waves-light">İptal</a>
+            </form>
+        </div>
+    </div>
+</div>

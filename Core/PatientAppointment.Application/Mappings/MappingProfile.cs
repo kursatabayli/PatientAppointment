@@ -94,6 +94,14 @@ namespace PatientAppointment.Application.Mappings
             CreateMap<User, UserResult>();
             CreateMap<CreateUserCommand, User>();
             CreateMap<UpdateUserCommand, User>();
+
+            CreateMap<User, GetUserWithPatientDetailsResult>()
+                .ForMember(dest => dest.PatientName,
+                    opt => opt.MapFrom(src => src.Patient.PatientFirstName + " " + src.Patient.PatientLastName));
+
+            CreateMap<User, GetUserWithPersonnelDetailsResult>()
+                .ForMember(dest => dest.PersonnelName,
+                    opt => opt.MapFrom(src => src.Personnel.PersonnelFirstName + " " + src.Personnel.PersonnelLastName));
         }
     }
 }

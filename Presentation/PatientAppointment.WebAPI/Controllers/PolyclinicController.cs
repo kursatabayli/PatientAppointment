@@ -45,7 +45,7 @@ namespace PatientAppointment.WebAPI.Controllers
             return Ok("Poliklinik Güncellendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePolyclinic(int id)
         {
             await _mediator.Send(new DeletePolyclinicCommand(id));

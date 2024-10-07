@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Kullanıcılar";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <h4 class="card-title">Kullanıcılar</h4>
+    <p class="card-subtitle mb-4">Kullanıcı bilgileri detayları.</p>
+
+    @await Component.InvokeAsync("_GetUserWithPersonnelDetailsComponentPartial")
+
+    @await Component.InvokeAsync("_GetUserWithPatientDetailsComponentPartial")
+
+</div>

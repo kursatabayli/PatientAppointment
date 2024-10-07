@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Paneli</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="~/admin/css/Style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h4 class="text-white text-center py-3">Admin Paneli</h4>
+        <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="/Admin/User/Index"><i class="fas fa-user"></i> Kullanıcılar</a>
+        <a href="#"><i class="fas fa-calendar"></i> Randevular</a>
+        <a href="#"><i class="fas fa-cogs"></i> Ayarlar</a>
+        <a href="#"><i class="fas fa-sign-out-alt"></i> Çıkış</a>
+    </div>
+
+    <div class="main-content">
+        <nav class="navbar">
+            <span class="navbar-text">Hoş geldiniz, Admin!</span>
+        </nav>
+
+        <div class="content">
+            @RenderBody()
+        </div>
+
+        <footer class="text-center bg-light">
+            <p>&copy; @DateTime.Now.Year Admin Paneli. Tüm Hakları Saklıdır.</p>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="~/admin/js/site.js"></script>
+</body>
+</html>

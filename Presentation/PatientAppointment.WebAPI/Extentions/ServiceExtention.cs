@@ -11,6 +11,7 @@ namespace PatientAppointment.WebAPI.Extentions
         {
             services.AddScoped<PatientAppointmentContext>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
             services.AddAutoMapper(typeof(MappingProfile));
             return services;
         }
