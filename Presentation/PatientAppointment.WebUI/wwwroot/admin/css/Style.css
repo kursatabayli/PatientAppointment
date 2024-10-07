@@ -1,0 +1,121 @@
+﻿/* Genel Ayarlar */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f3f6fa; /* Hafif gri-mavi tonunda arka plan */
+}
+
+body {
+    display: flex;
+    color: #2e2e35; /* Ana metin rengi için koyu gri */
+}
+
+/* Sidebar */
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #002855; /* Normal lacivert */
+    padding-top: 20px;
+    color: #c9d1de;
+}
+
+    .sidebar a {
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #c9d1de; /* Sidebar bağlantıları için açık lacivert tonları */
+        font-size: 1rem;
+        text-decoration: none;
+    }
+
+        .sidebar a i {
+            font-size: 1.2rem;
+        }
+
+        .sidebar a:hover {
+            background-color: #004080; /* Canlı bir lacivert */
+            color: #ffffff;
+            box-shadow: 3px 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+/* Main Content */
+.main-content {
+    margin-left: 250px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #003366; /* Sidebar ile uyumlu koyu lacivert */
+    color: #ffffff;
+    padding: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+    .navbar .navbar-text {
+        margin-left: auto;
+        font-weight: bold;
+    }
+
+/* Content */
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff; /* İçerik alanı için parlak beyaz */
+    color: #2e2e35;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #f3f6fa; /* Hafif gri-mavi tonunda arka plan */
+    color: #2e2e35;
+}
+
+/* Kart Tasarımı */
+.card {
+    background-color: #fafbfc; /* Daha yumuşak beyaz */
+    border: 1px solid #d9dee3; /* Hafif gri çerçeve */
+    border-radius: 10px;
+    padding: 20px;
+    color: #002855;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        background-color: #ffffff;
+    }
+
+/* Geçiş Animasyonları */
+a, .sidebar a {
+    transition: all 0.3s ease;
+}
+
+.rotate-animation {
+    transition: transform 0.5s ease;
+}
+
+.rotate-up {
+    transform: rotate(180deg);
+}
+
+.rotate-down {
+    transform: rotate(0deg);
+}
+
+/* Tıklanabilir öğeler için */
+.clickable {
+    cursor: pointer;
+}
