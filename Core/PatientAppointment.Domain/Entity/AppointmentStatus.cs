@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace PatientAppointment.Domain.Entity
 {
-    public class Status
+    public class AppointmentStatus
     {
-        public int StatusId { get; set; }
-        public string StatusName { get; set; }
+        public int AppointmentStatusId { get; set; }
+        public string Status { get; set; }
         List<Appointment> Appointments { get; set; }
     }
 }

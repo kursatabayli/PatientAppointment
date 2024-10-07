@@ -14,6 +14,6 @@ namespace PatientAppointment.Domain.Entities
         public string Phone { get; set; }
         public string Subject { get; set; }
         public string Messages { get; set; }
-        public DateTime SenDate { get; set; }
+        public DateTime SendDate { get; set; }
     }
 }

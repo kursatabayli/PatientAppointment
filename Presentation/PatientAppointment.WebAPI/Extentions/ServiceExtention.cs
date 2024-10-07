@@ -1,4 +1,5 @@
-﻿using PatientAppointment.Domain.Interfaces;
+﻿using PatientAppointment.Application.Mappings;
+using PatientAppointment.Domain.Interfaces;
 using PatientAppointment.Persistence.Context;
 using PatientAppointment.Persistence.Repositories;
 
@@ -10,7 +11,7 @@ namespace PatientAppointment.WebAPI.Extentions
         {
             services.AddScoped<PatientAppointmentContext>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-
+            services.AddAutoMapper(typeof(MappingProfile));
             return services;
         }
     }

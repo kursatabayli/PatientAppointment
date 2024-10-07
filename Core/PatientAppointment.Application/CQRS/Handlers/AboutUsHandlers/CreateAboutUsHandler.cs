@@ -7,26 +7,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace PatientAppointment.Application.CQRS.Handlers.AboutUsHandlers
 {
     public class CreateAboutUsHandler : IRequestHandler<CreateAboutUsCommand>
     {
         private readonly IRepository<AboutUs> _repository;
+        private readonly IMapper _mapper;
 
-        public CreateAboutUsHandler(IRepository<AboutUs> repository)
+        public CreateAboutUsHandler(IRepository<AboutUs> repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         public async Task Handle(CreateAboutUsCommand request, CancellationToken cancellationToken)
         {
-            await _repository.CreateAsync(new AboutUs
-            {
-                Title = request.Title,
-                Description = request.Description,
-                ImageUrl = request.ImageUrl,
-            });
+            var value = _mapper.Map<AboutUs>(request);
+            await _repository.CreateAsync(value);
         }
     }
 }

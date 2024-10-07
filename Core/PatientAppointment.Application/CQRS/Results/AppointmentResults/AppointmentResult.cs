@@ -15,10 +15,11 @@ namespace PatientAppointment.Application.CQRS.Results.AppointmentResults
         public int AppointmentId { get; set; }
         public DateTime AppointmentDate { get; set; }
         public TimeSpan AppointmentTime { get; set; }
-        public int PatientID { get; set; }
+        public int PatientId { get; set; }
         public int PolyclinicId { get; set; }
         public int PersonnelId { get; set; }
         public int StatusId { get; set; }
         public string? StatusDescription { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

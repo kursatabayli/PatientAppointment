@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using PatientAppointment.Application.CQRS.Queries.LocationQueries;
 using PatientAppointment.Application.CQRS.Results.LocationResults;
 using PatientAppointment.Domain.Entities;
@@ -14,21 +15,19 @@ namespace PatientAppointment.Application.CQRS.Handlers.LocationHandlers
     public class GetLocationByIdQueryHandler : IRequestHandler<GetLocationByIdQuery, LocationResult>
     {
         private readonly IRepository<Location> _repository;
+        private readonly IMapper _mapper;
 
-        public GetLocationByIdQueryHandler(IRepository<Location> repository)
+        public GetLocationByIdQueryHandler(IRepository<Location> repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         public async Task<LocationResult> Handle(GetLocationByIdQuery request, CancellationToken cancellationToken)
         {
             var value = await _repository.GetByIdAsync(request.Id);
-            return new LocationResult
-            {
-                LocationId = value.LocationId,
-                LocationName = value.LocationName,
-                LocationUrl = value.LocationUrl
-            };
+            var result = _mapper.Map<LocationResult>(value);
+            return result;
         }
     }
 }
