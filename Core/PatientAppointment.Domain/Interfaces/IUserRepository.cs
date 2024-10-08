@@ -9,6 +9,7 @@ namespace PatientAppointment.Domain.Interfaces
 {
     public interface IUserRepository
     {
-        public List<User> GetUserWithDetails();
+        Task<List<User>> GetUserWithPatientDetails();
+        Task<List<User>> GetUserWithPersonnelDetails();
     }
 }

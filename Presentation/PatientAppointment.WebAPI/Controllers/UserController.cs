@@ -51,5 +51,19 @@ namespace PatientAppointment.WebAPI.Controllers
             await _mediator.Send(new DeleteUserCommand(id));
             return Ok("Kullanıcı Silindi");
         }
+
+        [HttpGet("GetUserWithPatientDetails")]
+        public async Task<IActionResult> GetUserWithPatientDetails()
+        {
+            var values = await _mediator.Send(new GetUserWithPatientDetailsQuery());
+            return Ok(values);
+        }
+
+        [HttpGet("GetUserWithPersonnelDetails")]
+        public async Task<IActionResult> GetUserWithPersonnelDetails()
+        {
+            var values = await _mediator.Send(new GetUserWithPersonnelDetailsQuery());
+            return Ok(values);
+        }
     }
 }

@@ -19,10 +19,14 @@ namespace PatientAppointment.Persistence.Repositories
             _context = context;
         }
 
-        public List<User> GetUserWithDetails()
+        public async Task<List<User>> GetUserWithPatientDetails()
         {
-            var values = _context.User.Include(x => x.Patient).ThenInclude(y => y.Gender).Include(x => x.Personnel).ToList();
-            return values;
+            return await _context.User.Include(x => x.Patient).Where(x => x.PatientId != null).ToListAsync();
+        }
+
+        public async Task<List<User>> GetUserWithPersonnelDetails()
+        {
+            return await _context.User.Include(x => x.Personnel).Where(x => x.PersonnelId != null).ToListAsync();
         }
     }
 }

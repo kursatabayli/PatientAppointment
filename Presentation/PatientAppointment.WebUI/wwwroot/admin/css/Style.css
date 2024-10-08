@@ -3,22 +3,22 @@ html, body {
     height: 100%;
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    background-color: #f3f6fa; /* Hafif gri-mavi tonunda arka plan */
+    background-color: #f0f0f0;
 }
 
 body {
     display: flex;
-    color: #2e2e35; /* Ana metin rengi için koyu gri */
+    color: #2e2e35;
 }
 
 /* Sidebar */
 .sidebar {
-    height: 100vh;
-    width: 250px;
     position: fixed;
-    left: 0;
     top: 0;
-    background-color: #002855; /* Normal lacivert */
+    left: 0;
+    height: 100vh;
+    width: 200px;
+    background-color: #002855;
     padding-top: 20px;
     color: #c9d1de;
 }
@@ -28,80 +28,89 @@ body {
         display: flex;
         align-items: center;
         gap: 12px;
-        color: #c9d1de; /* Sidebar bağlantıları için açık lacivert tonları */
+        color: #c9d1de;
         font-size: 1rem;
         text-decoration: none;
+        transition: color 0.3s ease, background-color 0.3s ease;
     }
 
-        .sidebar a i {
-            font-size: 1.2rem;
+/* Navbar - Siyah Ton */
+.navbar {
+    background-color: #111; /* Siyaha yakın koyu bir ton */
+    color: #ffffff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+    .navbar h4 {
+        margin: 0;
+        font-size: 1.2rem;
+    }
+
+    .navbar .nav-links a {
+        margin-left: 1rem;
+        color: #ffffff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+        .navbar .nav-links a:hover {
+            color: #c9d1de;
         }
 
-        .sidebar a:hover {
-            background-color: #004080; /* Canlı bir lacivert */
-            color: #ffffff;
-            box-shadow: 3px 0 5px rgba(0, 0, 0, 0.2);
-        }
 
 /* Main Content */
 .main-content {
-    margin-left: 250px;
+    margin-left: 200px;
+    width: calc(100% - 200px);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    width: 100%;
+    background-color: #f3f6fa;
 }
 
-/* Navbar */
-.navbar {
-    background-color: #003366; /* Sidebar ile uyumlu koyu lacivert */
-    color: #ffffff;
-    padding: 15px;
-    display: flex;
-    justify-content: flex-end;
-}
-
-    .navbar .navbar-text {
-        margin-left: auto;
-        font-weight: bold;
-    }
-
-/* Content */
-.content {
+/* Page Content */
+.page-content {
     flex: 1;
     padding: 20px;
-    background-color: #ffffff; /* İçerik alanı için parlak beyaz */
-    color: #2e2e35;
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Daha hafif bir gölge */
 }
 
 /* Footer */
 footer {
+    padding: 10px;
     text-align: center;
-    padding: 1.5rem;
-    background-color: #f3f6fa; /* Hafif gri-mavi tonunda arka plan */
-    color: #2e2e35;
+    background-color: #002244;
+    color: #c9d1de;
+    font-size: 0.85rem;
+    bottom: 0;
+    right: 0;
 }
 
-/* Kart Tasarımı */
+
+/* Kart ve Diğer Stiller */
 .card {
-    background-color: #fafbfc; /* Daha yumuşak beyaz */
-    border: 1px solid #d9dee3; /* Hafif gri çerçeve */
-    border-radius: 10px;
-    padding: 20px;
-    color: #002855;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-    .card:hover {
-        transform: translateY(-5px);
-        background-color: #ffffff;
-    }
-
+.card-title {
+    font-size: 1.15rem;
+    color: #003366;
+    margin-bottom: 8px;
+}
 /* Geçiş Animasyonları */
-a, .sidebar a {
-    transition: all 0.3s ease;
-}
 
 .rotate-animation {
     transition: transform 0.5s ease;
@@ -115,7 +124,70 @@ a, .sidebar a {
     transform: rotate(0deg);
 }
 
-/* Tıklanabilir öğeler için */
+/* Tıklanabilir başlık için */
 .clickable {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
 }
+
+/* Ortak Arama Çubuğu Stili */
+.search-container {
+    display: flex;
+    justify-content: flex-start; /* Arama çubuğunu sola hizalar */
+    margin-bottom: 20px;
+}
+
+/* Ortak Arama Çubuğu */
+.search-input {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    border: 1px solid #d9dee3;
+}
+.minimalist-sidebar {
+    background-color: #222;
+    padding: 1rem;
+    width: 200px; /* Genişlik yazılar için artırıldı */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .minimalist-sidebar h4 {
+        font-size: 1rem;
+        color: #fff;
+        margin-bottom: 1.5rem;
+        text-align: center center;
+        width: 100%;
+    }
+
+    .minimalist-sidebar a {
+        color: #bbb;
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem; /* İkon ve metin arasındaki boşluk */
+        width: 100%;
+        transition: background-color 0.3s ease;
+    }
+
+        .minimalist-sidebar a:hover {
+            background-color: #444; /* Hover durumunda daha koyu bir arka plan */
+            color: #fff;
+        }
+
+    .minimalist-sidebar .logout {
+        margin-top: auto;
+        color: #ff6b6b;
+    }
+
+    .minimalist-sidebar i {
+        font-size: 1.2rem;
+    }

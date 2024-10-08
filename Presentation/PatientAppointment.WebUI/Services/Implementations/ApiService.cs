@@ -6,13 +6,13 @@ namespace PatientAppointment.WebUI.Services.Implementations
 {
     public class ApiService<T> : IApiService<T>
     {
-        private readonly IHttpClientFactory _clientFactory;
+        private readonly IHttpClientFactory _httpClientFactory;
         private readonly IConfiguration _configuration;
         private readonly string _baseUrl;
 
-        public ApiService(IHttpClientFactory clientFactory, IConfiguration configuration)
+        public ApiService(IHttpClientFactory httpClientFactory, IConfiguration configuration)
         {
-            _clientFactory = clientFactory;
+            _httpClientFactory = httpClientFactory;
             _configuration = configuration;
             _baseUrl = _configuration["ApiUrls:BaseApiUrl"]!;
         }
@@ -20,7 +20,7 @@ namespace PatientAppointment.WebUI.Services.Implementations
 
         public async Task<List<T>> GetListAsync(string url)
         {
-            var client = _clientFactory.CreateClient();
+            var client = _httpClientFactory.CreateClient();
 
             var responseMessage = await client.GetAsync(_baseUrl + url);
             if (responseMessage.IsSuccessStatusCode)
@@ -34,7 +34,7 @@ namespace PatientAppointment.WebUI.Services.Implementations
 
         public async Task<T> GetItemAsync(string url)
         {
-            var client = _clientFactory.CreateClient();
+            var client = _httpClientFactory.CreateClient();
 
             var responseMessage = await client.GetAsync(_baseUrl + url);
             if (responseMessage.IsSuccessStatusCode)
@@ -48,8 +48,7 @@ namespace PatientAppointment.WebUI.Services.Implementations
 
         public async Task<bool> CreateItemAsync(string url, T item)
         {
-            var client = _clientFactory.CreateClient();
-
+            var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(item);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await client.PostAsync(_baseUrl + url, stringContent);
@@ -59,7 +58,7 @@ namespace PatientAppointment.WebUI.Services.Implementations
 
         public async Task<bool> DeleteItemAsync(string url)
         {
-            var client = _clientFactory.CreateClient();
+            var client = _httpClientFactory.CreateClient();
 
             var responseMessage = await client.DeleteAsync(_baseUrl + url);
             return responseMessage.IsSuccessStatusCode;
@@ -67,7 +66,7 @@ namespace PatientAppointment.WebUI.Services.Implementations
 
         public async Task<bool> UpdateItemAsync(string url, T item)
         {
-            var client = _clientFactory.CreateClient();
+            var client = _httpClientFactory.CreateClient();
 
             var jsonData = JsonConvert.SerializeObject(item);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
@@ -78,7 +77,7 @@ namespace PatientAppointment.WebUI.Services.Implementations
 
         public async Task GetEmpty()
         {
-            var client = _clientFactory.CreateClient();
+            var client = _httpClientFactory.CreateClient();
         }
     }
 }

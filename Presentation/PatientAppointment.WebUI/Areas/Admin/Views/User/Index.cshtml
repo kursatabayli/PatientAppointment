@@ -1,28 +1,14 @@
-﻿@model List<GetUserDto>
-
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Kullanıcılar";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container mt-4">
-    <!-- Personel Tablosu -->
-    <h2 id="personnelHeader" class="clickable">
-        Personeller
-        <i class="fas fa-chevron-up rotate-animation rotate-down"></i>
-    </h2>
-    @{
-        Html.RenderPartial("_UserTable", Model.Where(u => u.PersonnelId != null));
-    }
+<div class="container-fluid">
+    <h4 class="card-title">Kullanıcılar</h4>
+    <p class="card-subtitle mb-4">Kullanıcı bilgileri detayları.</p>
 
-    <br /><br />
+    @await Component.InvokeAsync("_GetUserWithPersonnelDetailsComponentPartial")
 
-    <!-- Hasta Tablosu -->
-    <h2 id="patientHeader" class="clickable">
-        Hastalar
-        <i class="fas fa-chevron-up rotate-animation rotate-down"></i>
-    </h2>
-    @{
-        Html.RenderPartial("_UserTable", Model.Where(u => u.PatientId != null));
-    }
+    @await Component.InvokeAsync("_GetUserWithPatientDetailsComponentPartial")
+
 </div>

@@ -7,10 +7,9 @@
     <div class="main-content">
         @await Html.PartialAsync("_Navbar.cshtml")
 
-        <div class="content">
+        <div class="page-content">
             @RenderBody()
         </div>
-
         @await Html.PartialAsync("_Footer.cshtml")
     </div>
 
