@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PatientAppointment.Application.DTOs.UserDTOs;
+using PatientAppointment.WebUI.Services.Interfaces;
+
 
 namespace PatientAppointment.WebUI.Areas.Admin.Controllers
 {

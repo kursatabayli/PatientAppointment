@@ -49,7 +49,6 @@ namespace PatientAppointment.WebUI.Services.Implementations
         public async Task<bool> CreateItemAsync(string url, T item)
         {
             var client = _httpClientFactory.CreateClient();
-
             var jsonData = JsonConvert.SerializeObject(item);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await client.PostAsync(_baseUrl + url, stringContent);
